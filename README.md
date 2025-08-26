@@ -23,8 +23,8 @@ An intelligent stock analysis platform powered by Gemini AI, providing real-time
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd chatgpt_stocks
+   git clone https://github.com/Xuan-1998/ai-stock-recommendation-system.git
+   cd ai-stock-recommendation-system
    ```
 
 2. **Install dependencies**
@@ -103,7 +103,7 @@ DEFAULT_TECH_STOCKS = [
 ## 📁 Project Structure
 
 ```
-chatgpt_stocks/
+ai-stock-recommendation-system/
 ├── app.py                 # Main Streamlit application
 ├── config.py              # Configuration and settings
 ├── stock_data.py          # Stock data fetching and analysis
