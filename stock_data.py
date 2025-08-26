@@ -68,7 +68,7 @@ class StockDataFetcher:
             hist = ticker.history(period=period)
             
             if hist.empty:
-                print(f"警告: {symbol} 没有历史数据")
+                print(f"Warning: {symbol} has no historical data")
                 return None
             
             current_price = hist['Close'].iloc[-1]
@@ -290,28 +290,28 @@ class StockDataFetcher:
             signals = []
             current_price = hist['Close'].iloc[-1]
             
-            # 移动平均线信号
+            # Moving average signals
             if current_price > indicators['sma_20']:
-                signals.append("价格高于20日均线")
+                signals.append("Price above 20-day MA")
             else:
-                signals.append("价格低于20日均线")
+                signals.append("Price below 20-day MA")
             
             if current_price > indicators['sma_50']:
-                signals.append("价格高于50日均线")
+                signals.append("Price above 50-day MA")
             else:
-                signals.append("价格低于50日均线")
+                signals.append("Price below 50-day MA")
             
-            # RSI信号
+            # RSI signals
             if indicators['rsi'] > 70:
-                signals.append("RSI显示超买")
+                signals.append("RSI indicates overbought")
             elif indicators['rsi'] < 30:
-                signals.append("RSI显示超卖")
+                signals.append("RSI indicates oversold")
             
-            # 布林带信号
+            # Bollinger Bands signals
             if current_price > indicators['bollinger_upper']:
-                signals.append("价格突破布林带上轨")
+                signals.append("Price above Bollinger upper band")
             elif current_price < indicators['bollinger_lower']:
-                signals.append("价格跌破布林带下轨")
+                signals.append("Price below Bollinger lower band")
             
             indicators['signals'] = signals
             
@@ -326,7 +326,7 @@ class StockDataFetcher:
                 'macd': 0,
                 'bollinger_upper': 0,
                 'bollinger_lower': 0,
-                'signals': ['技术指标计算失败']
+                'signals': ['Technical indicator calculation failed']
             }
         
         return indicators
