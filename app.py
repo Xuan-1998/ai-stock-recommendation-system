@@ -44,6 +44,42 @@ st.markdown("""
         border-radius: 15px;
         margin: 1rem 0;
     }
+    .stock-overview {
+        background-color: #ffffff;
+        color: #262730;
+        padding: 1rem;
+        border-radius: 10px;
+        border: 1px solid #e0e0e0;
+        margin: 0.5rem 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .stock-name {
+        font-weight: bold;
+        color: #1f77b4;
+        font-size: 1.1rem;
+    }
+    .stock-price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #262730;
+    }
+    .stock-change {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .stock-change.positive {
+        color: #28a745;
+    }
+    .stock-change.negative {
+        color: #dc3545;
+    }
+    .stock-change.neutral {
+        color: #6c757d;
+    }
+    .stock-metric {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
     .buy {
         border-left: 4px solid #28a745;
         background-color: #d4edda;
@@ -494,14 +530,16 @@ Based on the analysis of {symbol}, we provide the following investment recommend
     
     def display_stock_card(self, stock):
         """Display stock card"""
-        change_color = "green" if stock['price_change_pct'] >= 0 else "red"
+        change_class = "positive" if stock['price_change_pct'] >= 0 else "negative"
+        if stock['price_change_pct'] == 0:
+            change_class = "neutral"
         
         st.markdown(f"""
-        <div class="metric-card">
-            <h4>{stock['symbol']} - {stock['name']}</h4>
-            <p><strong>${stock['current_price']}</strong></p>
-            <p style="color: {change_color};">{stock['price_change_pct']:+.2f}%</p>
-            <p>Market Cap: {stock['market_cap']}</p>
+        <div class="stock-overview">
+            <div class="stock-name">{stock['symbol']} - {stock['name']}</div>
+            <div class="stock-price">${stock['current_price']}</div>
+            <div class="stock-change {change_class}">{stock['price_change_pct']:+.2f}%</div>
+            <div class="stock-metric">Market Cap: {stock['market_cap']}</div>
         </div>
         """, unsafe_allow_html=True)
     
