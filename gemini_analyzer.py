@@ -1,5 +1,5 @@
 import google.generativeai as genai
-from config import GEMINI_API_KEY, ANALYSIS_PROMPT
+from config import GEMINI_API_KEY, ANALYSIS_PROMPT, ENHANCED_ANALYSIS_PROMPT, NANCY_PELOSI_TRADES
 import json
 import re
 
@@ -38,17 +38,19 @@ class GeminiAnalyzer:
             else:
                 news_summary = "No recent news available"
             
-            # Create analysis prompt
-            prompt = ANALYSIS_PROMPT.format(
-                symbol=stock_data['symbol'],
-                name=stock_data['name'],
+            # Get Nancy Pelosi trading activity
+            pelosi_analysis = self._get_pelosi_analysis(stock_data['symbol'])
+            
+            # Create enhanced analysis prompt
+            prompt = ENHANCED_ANALYSIS_PROMPT.format(
                 current_price=stock_data['current_price'],
                 high_52w=stock_data['high_52w'],
                 low_52w=stock_data['low_52w'],
                 pe_ratio=stock_data['pe_ratio'],
                 market_cap=stock_data['market_cap'],
-                technical_analysis=tech_summary,
-                news_summary=news_summary
+                technical_indicators=tech_summary,
+                news_summary=news_summary,
+                pelosi_analysis=pelosi_analysis
             )
             
             # Generate analysis
@@ -61,6 +63,28 @@ class GeminiAnalyzer:
         except Exception as e:
             print(f"Error in stock analysis: {e}")
             return self._get_default_analysis(stock_data)
+    
+    def _get_pelosi_analysis(self, symbol):
+        """Get Nancy Pelosi's trading activity for a specific stock"""
+        if symbol in NANCY_PELOSI_TRADES:
+            trade_data = NANCY_PELOSI_TRADES[symbol]
+            return f"""
+Nancy Pelosi Trading Activity for {symbol}:
+- Last Action: {trade_data['last_action']}
+- Date: {trade_data['last_date']}
+- Amount: {trade_data['amount']}
+- Return: {trade_data['return']}
+- Sentiment: {trade_data['sentiment']}
+
+Note: Nancy Pelosi's trading strategy has shown +740.83% return since 2014, significantly outperforming the market (+243.16%).
+"""
+        else:
+            return f"""
+Nancy Pelosi Trading Activity for {symbol}:
+No recent trading activity found for this stock.
+
+Note: Nancy Pelosi's trading strategy has shown +740.83% return since 2014, significantly outperforming the market (+243.16%).
+"""
     
     def get_market_sentiment(self, news_data):
         """Analyze market sentiment based on news"""

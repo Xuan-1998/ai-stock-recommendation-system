@@ -9,7 +9,7 @@ import os
 from stock_data import StockDataFetcher
 from news_collector import NewsCollector
 from gemini_analyzer import GeminiAnalyzer
-from config import DEFAULT_TECH_STOCKS, GEMINI_API_KEY
+from config import DEFAULT_TECH_STOCKS, GEMINI_API_KEY, NANCY_PELOSI_TRADES
 
 # Page configuration
 st.set_page_config(
@@ -594,6 +594,34 @@ Based on the analysis of {symbol}, we provide the following investment recommend
             <p><strong>Risk Level:</strong> {analysis_result['risk_level']}</p>
         </div>
         """, unsafe_allow_html=True)
+        
+        # Nancy Pelosi trading activity
+        if stock_data['symbol'] in NANCY_PELOSI_TRADES:
+            pelosi_data = NANCY_PELOSI_TRADES[stock_data['symbol']]
+            st.markdown("## 🏛️ Nancy Pelosi Trading Activity")
+            
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.metric("Last Action", pelosi_data['last_action'])
+            with col2:
+                st.metric("Amount", pelosi_data['amount'])
+            with col3:
+                st.metric("Return", pelosi_data['return'])
+            
+            sentiment_color = {
+                'Bullish': '🟢',
+                'Bearish': '🔴', 
+                'Neutral': '🟡'
+            }.get(pelosi_data['sentiment'], '🟡')
+            
+            st.info(f"""
+            **{sentiment_color} Sentiment: {pelosi_data['sentiment']}**
+            
+            **Date:** {pelosi_data['last_date']}
+            
+            **Note:** Nancy Pelosi's trading strategy has shown +740.83% return since 2014, 
+            significantly outperforming the market (+243.16%).
+            """)
         
         # Analysis details
         col1, col2 = st.columns(2)
