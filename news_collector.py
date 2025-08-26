@@ -83,21 +83,21 @@ class NewsCollector:
                 'source': 'Reuters',
                 'date': datetime.now() - timedelta(days=1),
                 'summary': 'Major technology companies reported better-than-expected earnings, driving the tech sector higher.',
-                'link': 'https://example.com/news1'
+                'link': None
             },
             {
                 'title': 'AI Development Accelerates Market Innovation',
                 'source': 'Bloomberg',
                 'date': datetime.now() - timedelta(days=2),
                 'summary': 'Artificial intelligence advancements continue to reshape the technology landscape.',
-                'link': 'https://example.com/news2'
+                'link': None
             },
             {
                 'title': 'Cloud Computing Demand Surges',
                 'source': 'CNBC',
                 'date': datetime.now() - timedelta(days=3),
                 'summary': 'Enterprise cloud adoption drives growth in cloud computing services.',
-                'link': 'https://example.com/news3'
+                'link': None
             }
         ]
         
@@ -111,35 +111,35 @@ class NewsCollector:
                 'source': 'CNBC',
                 'date': datetime.now() - timedelta(days=1),
                 'summary': 'Global electric vehicle sales growth has slowed, putting pressure on Tesla and other major manufacturers.',
-                'link': 'https://example.com/tech1'
+                'link': None
             },
             {
                 'title': 'Tech Stocks Lead Market Gains, AI-Related Stocks Show Strong Performance',
                 'source': 'Reuters',
                 'date': datetime.now() - timedelta(days=1),
                 'summary': 'Rapid development of artificial intelligence technology is driving tech stock gains, with investors optimistic about AI prospects.',
-                'link': 'https://example.com/tech2'
+                'link': None
             },
             {
                 'title': 'Chip Manufacturer Earnings Exceed Expectations, Semiconductor Sector Strengthens',
                 'source': 'Bloomberg',
                 'date': datetime.now() - timedelta(days=3),
                 'summary': 'Major chip manufacturers released strong earnings reports, showing signs of industry recovery.',
-                'link': 'https://example.com/tech3'
+                'link': None
             },
             {
                 'title': 'Cloud Computing Service Demand Continues to Grow, Microsoft Azure Performs Well',
                 'source': 'Reuters',
                 'date': datetime.now() - timedelta(days=4),
                 'summary': 'Enterprise digital transformation is driving cloud computing service demand, benefiting cloud service providers like Microsoft.',
-                'link': 'https://example.com/tech4'
+                'link': None
             },
             {
                 'title': 'Social Media Platforms Face Regulatory Pressure, Meta Stock Volatile',
                 'source': 'Bloomberg',
                 'date': datetime.now() - timedelta(days=4),
                 'summary': 'Countries are strengthening regulation of social media platforms, with Meta and other companies facing new compliance challenges.',
-                'link': 'https://example.com/tech5'
+                'link': None
             }
         ]
         
@@ -154,14 +154,14 @@ class NewsCollector:
                     'source': 'Reuters',
                     'date': datetime.now() - timedelta(days=1),
                     'summary': f'{company_name} announced better-than-expected iPhone sales, driven by strong demand in emerging markets.',
-                    'link': 'https://example.com/apple1'
+                    'link': None
                 },
                 {
                     'title': f'{company_name} Services Revenue Continues to Grow',
                     'source': 'Bloomberg',
                     'date': datetime.now() - timedelta(days=2),
                     'summary': f'{company_name} services business shows strong growth, improving profit margins and diversifying revenue streams.',
-                    'link': 'https://example.com/apple2'
+                    'link': None
                 }
             ],
             'MSFT': [
@@ -170,14 +170,14 @@ class NewsCollector:
                     'source': 'CNBC',
                     'date': datetime.now() - timedelta(days=1),
                     'summary': f'{company_name} Azure cloud computing platform continues to gain market share, driving overall revenue growth.',
-                    'link': 'https://example.com/msft1'
+                    'link': None
                 },
                 {
                     'title': f'{company_name} AI Integration Boosts Productivity Tools',
                     'source': 'Reuters',
                     'date': datetime.now() - timedelta(days=3),
                     'summary': f'{company_name} is integrating AI capabilities into its productivity tools, enhancing user experience.',
-                    'link': 'https://example.com/msft2'
+                    'link': None
                 }
             ],
             'GOOGL': [
@@ -186,14 +186,14 @@ class NewsCollector:
                     'source': 'Bloomberg',
                     'date': datetime.now() - timedelta(days=1),
                     'summary': f'{company_name} search advertising business continues to dominate the market with strong revenue growth.',
-                    'link': 'https://example.com/google1'
+                    'link': None
                 },
                 {
                     'title': f'{company_name} YouTube Business Shows Strong Performance',
                     'source': 'CNBC',
                     'date': datetime.now() - timedelta(days=2),
                     'summary': f'{company_name} YouTube platform continues to grow, with increasing advertising revenue and user engagement.',
-                    'link': 'https://example.com/google2'
+                    'link': None
                 }
             ]
         }
@@ -211,13 +211,13 @@ class NewsCollector:
                     'source': 'Reuters',
                     'date': datetime.now() - timedelta(days=1),
                     'summary': f'{company_name} stock has shown strong performance recently, driven by solid fundamentals and market conditions.',
-                    'link': f'https://example.com/{symbol.lower()}1'
+                    'link': None
                 },
                 {
                     'title': f'{company_name} Announces New Strategic Initiatives',
                     'source': 'Bloomberg',
                     'date': datetime.now() - timedelta(days=2),
                     'summary': f'{company_name} has announced new strategic initiatives aimed at driving future growth and market expansion.',
-                    'link': f'https://example.com/{symbol.lower()}2'
+                    'link': None
                 }
             ][:max_results]

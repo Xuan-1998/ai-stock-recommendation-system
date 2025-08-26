@@ -343,7 +343,7 @@ class StockRecommendationApp:
                     
                     {news.get('summary', '')[:100]}...
                     
-                    [Read More]({news['link']})
+                    {f"[Read More]({news['link']})" if news.get('link') else "Read More (Demo)"}
                     
                     ---
                     """)
