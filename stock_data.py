@@ -1,4 +1,3 @@
-import yfinance as yf
 import pandas as pd
 from datetime import datetime, timedelta
 import numpy as np
@@ -38,18 +37,16 @@ class StockDataFetcher:
             try:
                 # 添加随机延迟避免API限制
                 if attempt > 0:
-                    time.sleep(random.uniform(2, 5))
+                    time.sleep(random.uniform(1, 3))
                 
-                # 尝试使用yfinance
-                data = self._get_from_yfinance(symbol, period)
-                if data:
-                    return data
-                
-                # 如果yfinance失败，尝试备用数据源
-                print(f"yfinance获取{symbol}失败，尝试备用数据源...")
+                # 尝试使用备用数据源
                 data = self._get_from_backup_source(symbol)
                 if data:
                     return data
+                
+                # 如果备用数据源失败，使用模拟数据
+                print(f"备用数据源获取{symbol}失败，使用模拟数据...")
+                return self._create_mock_data(symbol)
                 
             except Exception as e:
                 print(f"获取 {symbol} 数据时出错 (尝试 {attempt + 1}/{max_retries}): {e}")
@@ -58,52 +55,6 @@ class StockDataFetcher:
                     return self._create_mock_data(symbol)
         
         return None
-    
-    def _get_from_yfinance(self, symbol, period):
-        """从yfinance获取数据"""
-        try:
-            ticker = yf.Ticker(symbol)
-            
-            # 分别获取历史和基本信息，避免一次性请求过多数据
-            hist = ticker.history(period=period)
-            
-            if hist.empty:
-                print(f"Warning: {symbol} has no historical data")
-                return None
-            
-            current_price = hist['Close'].iloc[-1]
-            
-            # 尝试获取基本信息，如果失败则使用默认值
-            try:
-                info = ticker.info
-            except Exception as e:
-                print(f"获取 {symbol} 基本信息失败，使用默认值: {e}")
-                info = {}
-            
-            data = {
-                'symbol': symbol,
-                'name': self.stock_info.get(symbol, symbol),
-                'current_price': round(current_price, 2),
-                'previous_close': round(hist['Close'].iloc[-2] if len(hist) > 1 else current_price, 2),
-                'high_52w': round(hist['High'].max(), 2),
-                'low_52w': round(hist['Low'].min(), 2),
-                'volume': hist['Volume'].iloc[-1],
-                'avg_volume': round(hist['Volume'].mean(), 0),
-                'pe_ratio': info.get('trailingPE', 'N/A'),
-                'market_cap': self._format_market_cap(info.get('marketCap', 0)),
-                'price_change': round(current_price - hist['Close'].iloc[-2] if len(hist) > 1 else 0, 2),
-                'price_change_pct': round(((current_price / hist['Close'].iloc[-2] - 1) * 100) if len(hist) > 1 else 0, 2),
-                'price_history': hist
-            }
-            
-            # 计算技术指标
-            data['technical_analysis'] = self._calculate_technical_indicators(hist)
-            
-            return data
-            
-        except Exception as e:
-            print(f"yfinance获取{symbol}失败: {e}")
-            return None
     
     def _get_from_backup_source(self, symbol):
         """从备用数据源获取数据"""
