@@ -3,7 +3,7 @@
 # AI Stock Recommendation System - Quick Start Script
 # This script checks dependencies and starts the application
 
-echo "🤖 AI Stock Recommendation System"
+echo "🚀 Tech Stocks Investment Analyzer"
 echo "=================================="
 
 # Check if Python 3 is installed
@@ -63,7 +63,7 @@ else
 fi
 
 echo ""
-echo "🚀 Starting AI Stock Recommendation System..."
+echo "🚀 Starting Tech Stocks Investment Analyzer..."
 echo "The application will open in your browser at http://localhost:8501"
 echo "Press Ctrl+C to stop the application"
 echo ""

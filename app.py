@@ -13,8 +13,8 @@ from config import DEFAULT_TECH_STOCKS, GEMINI_API_KEY, NANCY_PELOSI_TRADES
 
 # Page configuration
 st.set_page_config(
-    page_title="AI Stock Recommendation System",
-    page_icon="📈",
+    page_title="Tech Stocks Investment Analyzer",
+    page_icon="🚀",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -78,7 +78,7 @@ def setup_api_key():
     
     # If no API key, show input interface
     if not current_api_key:
-        st.markdown("## 🔑 Welcome to AI Stock Recommendation System")
+        st.markdown("## 🔑 Welcome to Tech Stocks Investment Analyzer")
         st.markdown("### First-time setup requires Gemini API key")
         
         st.info("""
@@ -166,8 +166,8 @@ class StockRecommendationApp:
         api_key = setup_api_key()
         
         # Main title
-        st.markdown('<h1 class="main-header">🤖 AI Stock Recommendation System</h1>', unsafe_allow_html=True)
-        st.markdown('<p style="text-align: center; font-size: 1.2rem; color: #666;">Intelligent stock analysis platform powered by Gemini AI</p>', unsafe_allow_html=True)
+        st.markdown('<h1 class="main-header">🚀 Tech Stocks Investment Analyzer</h1>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: center; font-size: 1.2rem; color: #666;">Comprehensive tech-focused investment analysis platform powered by Gemini AI</p>', unsafe_allow_html=True)
         
         # Sidebar
         self.sidebar()
@@ -216,7 +216,7 @@ class StockRecommendationApp:
     
     def dashboard(self):
         """Main dashboard"""
-        st.markdown("## 📈 Popular Tech Stocks Overview")
+        st.markdown("## 🚀 Tech Stocks Investment Overview")
         
         # Get all stock data
         with st.spinner("Fetching stock data..."):

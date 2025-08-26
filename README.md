@@ -1,18 +1,20 @@
-# 🤖 AI Stock Recommendation System
+# 🚀 Tech Stocks Investment Analyzer
 
-An intelligent stock analysis platform powered by Gemini AI, providing real-time stock data analysis, technical indicators, and AI-powered investment recommendations.
+A comprehensive tech-focused investment analysis platform powered by Google's Gemini AI, providing real-time stock data analysis, technical indicators, and AI-powered investment recommendations specifically for technology stocks.
 <img width="948" height="463" alt="Screenshot 2025-08-25 at 9 13 46 PM" src="https://github.com/user-attachments/assets/fe166e41-b6aa-4967-b45f-612160e6312f" />
 <img width="936" height="476" alt="Screenshot 2025-08-25 at 9 13 53 PM" src="https://github.com/user-attachments/assets/ede25ed7-fdb2-4520-9e12-47a5391fd3db" />
 
 
 ## ✨ Features
 
+- **Tech Stocks Focus**: Specialized analysis for technology sector stocks
 - **Real-time Stock Data**: Fetch live stock prices and market data
 - **Technical Analysis**: Calculate and display key technical indicators (RSI, MACD, Moving Averages, Bollinger Bands)
 - **AI-Powered Analysis**: Get intelligent buy/sell recommendations using Google's Gemini AI
-- **News Integration**: Latest market news and company-specific updates
+- **News Integration**: Latest tech market news and company-specific updates
 - **Interactive Charts**: Beautiful price charts with technical indicators
 - **Market Sentiment**: AI analysis of overall market sentiment
+- **Congress Trading Signals**: Nancy Pelosi's trading activity analysis
 - **Demo Mode**: Works without API keys using mock data for demonstration
 
 ## 🚀 Quick Start
@@ -26,8 +28,8 @@ An intelligent stock analysis platform powered by Gemini AI, providing real-time
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Xuan-1998/ai-stock-recommendation-system.git
-   cd ai-stock-recommendation-system
+   git clone https://github.com/Xuan-1998/tech-stocks-investment-analyzer.git
+   cd tech-stocks-investment-analyzer
    ```
 
 2. **Install dependencies**
@@ -88,8 +90,8 @@ An intelligent stock analysis platform powered by Gemini AI, providing real-time
 
 ## 🔧 Configuration
 
-### Stock List
-Edit `config.py` to customize the default stock list:
+### Tech Stocks List
+Edit `config.py` to customize the default tech stocks list:
 ```python
 DEFAULT_TECH_STOCKS = [
     'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 
