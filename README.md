@@ -1,6 +1,9 @@
 # 🤖 AI Stock Recommendation System
 
 An intelligent stock analysis platform powered by Gemini AI, providing real-time stock data analysis, technical indicators, and AI-powered investment recommendations.
+<img width="948" height="463" alt="Screenshot 2025-08-25 at 9 13 46 PM" src="https://github.com/user-attachments/assets/fe166e41-b6aa-4967-b45f-612160e6312f" />
+<img width="936" height="476" alt="Screenshot 2025-08-25 at 9 13 53 PM" src="https://github.com/user-attachments/assets/ede25ed7-fdb2-4520-9e12-47a5391fd3db" />
+
 
 ## ✨ Features
 
